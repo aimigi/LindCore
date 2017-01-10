@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace LindCore
+namespace LindCore.Domain.Behavors
 {
     /// <summary>
-    /// 领域实体基类
+    /// 实体－ 排序行为
     /// </summary>
-    /// <typeparam name="Key">主键类型</typeparam>
-    public class Entity<Key>
+    public interface ISortBehavor
     {
         /// <summary>
-        /// 统一主键
+        /// 序列
         /// </summary>
-       public Key Id { get; set; }
+        int SortNumber { get; set; }
     }
 }
