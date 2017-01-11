@@ -12,8 +12,13 @@ using System.Linq.Expressions;
 
 namespace LindCore.Repositories.MongoDB
 {
-    public class MongoRepository<TEntity> : IExtensionRepository<TEntity>
-      where TEntity : class
+    /// <summary>
+    /// MongoDB进行持久化
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    public class MongoRepository<TEntity> :
+        IExtensionRepository<TEntity>
+        where TEntity : class
     {
 
         #region Fields & consts
@@ -246,6 +251,7 @@ namespace LindCore.Repositories.MongoDB
 
         #endregion
 
+        #region IRepository<TEntity> 成员
         public void Delete(TEntity item)
         {
             var query = Builders<TEntity>.Filter.Eq("_id", new ObjectId(typeof(TEntity).GetProperty(EntityKey)
@@ -287,6 +293,9 @@ namespace LindCore.Repositories.MongoDB
               Builders<TEntity>.Update.Combine(GeneratorMongoUpdate(item, query)));
         }
 
+        #endregion
+
+        #region IExtensionRepository<TEntity> 成员
         public void Insert(IEnumerable<TEntity> item)
         {
             if (item != null && item.Any())
@@ -368,5 +377,6 @@ namespace LindCore.Repositories.MongoDB
             orderBy(linq);
             return linq.Queryable;
         }
+        #endregion
     }
 }

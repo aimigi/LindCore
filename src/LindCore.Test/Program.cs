@@ -10,7 +10,8 @@ namespace LindCore.Test
     {
         public static void Main(string[] args)
         {
-            LoggerFactory.Instance.Logger_Debug("test...");
+            LoggerFactory.Logger_Debug("test...");
+            Console.WriteLine("Lind for .NetCore Platform!");
             Console.ReadKey();
         }
     }

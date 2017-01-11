@@ -17,7 +17,7 @@ namespace LindCore.Logger.Implements
         static readonly object objLock = new object();
         protected override void InputLogger(string message)
         {
-            string filePath = Path.Combine(FileUrl, DateTime.Now.ToUniversalTime() + ".log");
+            string filePath = Path.Combine(FileUrl, DateTime.Now.ToString("yyyyMMdd") + ".log");
 
             if (!System.IO.Directory.Exists(FileUrl))
                 System.IO.Directory.CreateDirectory(FileUrl);

@@ -1,4 +1,5 @@
 ﻿using LindCore.IRepositories;
+using LindCore.Logger;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,12 @@ using System.Threading.Tasks;
 namespace LindCore.Repositories.EF
 {
     /// <summary>
-    /// 使用EF进行持久化
+    /// EF进行持久化
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class EFRepository<TEntity> : IExtensionRepository<TEntity>
-      where TEntity : class
+    public class EFRepository<TEntity> :
+        IExtensionRepository<TEntity>
+        where TEntity : class
     {
         #region Constructors
         /// <summary>
@@ -31,7 +33,7 @@ namespace LindCore.Repositories.EF
         {
             Db = db;
             this.DataPageSize = 10000;
-         }
+        }
         #endregion
 
         /// <summary>
@@ -51,26 +53,12 @@ namespace LindCore.Repositories.EF
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                Lind.DDD.Logger.LoggerFactory.Instance.Logger_Error(ex);
-                throw new DbUpdateConcurrencyException("Lind.DDD框架在更新时引起了乐观并发，后修改的数据不会被保存");
-            }
-            catch (DbEntityValidationException ex)
-            {
-                List<string> errorMessages = new List<string>();
-                foreach (DbEntityValidationResult validationResult in ex.EntityValidationErrors)
-                {
-                    string entityName = validationResult.Entry.Entity.GetType().Name;
-                    foreach (DbValidationError error in validationResult.ValidationErrors)
-                    {
-                        errorMessages.Add(entityName + "." + error.PropertyName + ": " + error.ErrorMessage);
-                    }
-                }
-                Lind.DDD.Logger.LoggerFactory.Instance.Logger_Fatal("Error Fields:" + string.Join(",", errorMessages));
+                LoggerFactory.Logger_Error(ex);
                 throw;
             }
             catch (Exception ex)
             {
-                Lind.DDD.Logger.LoggerFactory.Instance.Logger_Error(ex);
+                LoggerFactory.Logger_Error(ex);
                 throw;
             }
 
@@ -256,7 +244,7 @@ namespace LindCore.Repositories.EF
 
         #endregion
 
-         #region Fields
+        #region Fields
         /// <summary>
         /// 数据总数
         /// </summary>
