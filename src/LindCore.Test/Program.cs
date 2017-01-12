@@ -12,7 +12,7 @@ namespace LindCore.Test
         {
             LoggerFactory.Logger_Debug("test...");
             Console.WriteLine("Lind for .NetCore Platform!");
-            Console.ReadKey();
+            Console.ReadKey(); 
         }
     }
 }
