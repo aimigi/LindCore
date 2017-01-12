@@ -123,7 +123,7 @@ namespace LindCore.ConfigConstants
                     lock (_lockObj)
                     {
 
-                        var old = SerializeMemoryHelper.DeserializeFromJsonFile<ConfigModel>(_fileName);
+                        var old = SerializationHelper.DeserializeFromJson<ConfigModel>(_fileName);
 
                         if (old != null)
                         {
@@ -131,7 +131,7 @@ namespace LindCore.ConfigConstants
                         }
                         else
                         {
-                            SerializeMemoryHelper.SerializableToJsonFile(_fileName, _init);
+                            SerializationHelper.SerializableToJson(_fileName, _init);
                             _config = _init;
                         }
 

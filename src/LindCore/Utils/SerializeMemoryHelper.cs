@@ -14,7 +14,6 @@ namespace LindCore.Utils
     /// </summary>
     public class SerializeMemoryHelper
     {
- 
         #region JSON
         /// <summary>
         /// 字符串反序列化
@@ -60,52 +59,8 @@ namespace LindCore.Utils
 
         }
 
+
         #endregion
-
-        static object lockObj = new object();
-        /// <summary>
-        /// 二进制序列化到磁盘
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <param name="obj"></param>
-        public static void SerializableToJsonFile(string fileName, object obj)
-        {
-            lock (lockObj)
-            {
-                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
-                {
-                     using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
-                    {
-                        sw.Write(SerializeToJson(obj));
-                    }
-                }
-            }
-        }
-        /// <summary>
-        /// 二进制反序列化从磁盘到内存对象
-        /// </summary>
-        /// <param name="fileName"></param>
-        /// <returns></returns>
-        public static T DeserializeFromJsonFile<T>(string fileName)
-        {
-            try
-            {
-                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
-                {
-                   
-                    using (StreamReader sw = new StreamReader(fs, Encoding.UTF8))
-                    {
-                        return DeserializeFromJson<T>(sw.ReadToEnd());
-                    }
-
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
- 
-}
+    }
 
 }
