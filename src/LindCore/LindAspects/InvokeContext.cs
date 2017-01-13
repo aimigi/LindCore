@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Lind.DDD.LindAspects.Metadata;
+using LindCore.LindAspects.Metadata;
 using System.Reflection;
 
 namespace LindCore.LindAspects

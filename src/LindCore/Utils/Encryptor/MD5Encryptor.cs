@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace Lind.DDD.Utils.Encryptor
+namespace LindCore.Utils.Encryptor
 {
     internal class MD5Encryptor
     {
