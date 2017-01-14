@@ -1,5 +1,4 @@
-﻿using LindCore.ConfigConstants.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +7,9 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using LindCore.Utils;
-namespace LindCore.ConfigConstants
+using LindCore.GlobalConfig.Models;
+
+namespace LindCore.GlobalConfig
 {
     /// <summary>
     /// 框架级配置信息初始化，默认使用xml进行存储
@@ -90,12 +91,12 @@ namespace LindCore.ConfigConstants
                                      "CsQuery",
                                      "Dapper"};
             _init.AutoLoadDLL_BlackList = string.Join(",", blacklist);
-            _init.Versions.Add(new ConfigConstants.Models.Version
+            _init.Versions.Add(new Models.Version
             {
                 Code = "1.0.1",
                 Info = "字符串配置项"
             });
-            _init.Versions.Add(new ConfigConstants.Models.Version
+            _init.Versions.Add(new Models.Version
             {
                 Code = "1.0.2",
                 Info = "面向对象的配置项"

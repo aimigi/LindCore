@@ -1,13 +1,12 @@
-﻿using StackExchange.Redis;
+﻿using LindCore.Utils;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 
 namespace StackExchange.Redis
 {
@@ -30,7 +29,7 @@ namespace StackExchange.Redis
         public static T Get<T>(this IDatabase cache, string key)
         {
 
-            return Lind.DDD.Utils.SerializeMemoryHelper.DeserializeFromJson<T>(cache.StringGet(key));
+            return SerializeMemoryHelper.DeserializeFromJson<T>(cache.StringGet(key));
         }
         /// <summary>
         /// 得到键所对应的值
@@ -40,7 +39,7 @@ namespace StackExchange.Redis
         /// <returns></returns>
         public static object Get(this IDatabase cache, string key)
         {
-            return Lind.DDD.Utils.SerializeMemoryHelper.DeserializeFromJson<object>(cache.StringGet(key));
+            return SerializeMemoryHelper.DeserializeFromJson<object>(cache.StringGet(key));
         }
         /// <summary>
         /// 设置键对应的值,过期时间后自己删除
@@ -51,7 +50,7 @@ namespace StackExchange.Redis
         /// <param name="expireMinutes"></param>
         public static void Set(this IDatabase cache, string key, object value, int expireMinutes)
         {
-            string json = Lind.DDD.Utils.SerializeMemoryHelper.SerializeToJson(value);
+            string json = SerializeMemoryHelper.SerializeToJson(value);
             cache.StringSet(key, json, TimeSpan.FromMinutes(expireMinutes));
         }
         /// <summary>
@@ -73,38 +72,7 @@ namespace StackExchange.Redis
         {
             cache.KeyDelete(key);
         }
-        /// <summary>
-        /// 出队列
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="cache"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static T Pop<T>(this IDatabase cache, string key)
-        {
-            return Deserialize<T>(cache.ListLeftPop(key));
-        }
-        /// <summary>
-        /// 出队列
-        /// 存储为二进制
-        /// </summary>
-        /// <param name="cache"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static object Pop(this IDatabase cache, string key)
-        {
-            return Deserialize<object>(cache.ListLeftPop(key));
-        }
-        /// <summary>
-        /// 二进制直接出队列
-        /// </summary>
-        /// <param name="cache"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static byte[] PopByte(this IDatabase cache, string key)
-        {
-            return cache.ListLeftPop(key);
-        }
+
         /// <summary>
         /// 出队列JSON
         /// </summary>
@@ -114,7 +82,7 @@ namespace StackExchange.Redis
         /// <returns></returns>
         public static T PopJson<T>(this IDatabase cache, string key)
         {
-            return Lind.DDD.Utils.SerializeMemoryHelper.DeserializeFromJson<T>(cache.ListLeftPop(key));
+            return SerializeMemoryHelper.DeserializeFromJson<T>(cache.ListLeftPop(key));
         }
         /// <summary>
         /// 出队列JSON
@@ -122,67 +90,13 @@ namespace StackExchange.Redis
         /// <param name="cache"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static object PopJson(this IDatabase cache, string key)
+        public static void PushJson<T>(this IDatabase cache, string key, T obj)
         {
-            return Lind.DDD.Utils.SerializeMemoryHelper.DeserializeFromJson<object>(cache.ListLeftPop(key));
+            cache.ListRightPush(key, SerializeMemoryHelper.SerializeToJson<T>(obj));
         }
 
-        /// <summary>
-        /// 入队列
-        /// 存储为二进制
-        /// </summary>
-        /// <param name="cache"></param>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        public static void Push(this IDatabase cache, string key, object value)
-        {
-            cache.ListLeftPush(key, Serialize(value));
-        }
+
         #endregion
-
-        #region Serialize Bin
-        /// <summary>
-        /// 二进制序列化
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns></returns>
-        static byte[] Serialize(object o)
-        {
-            if (o == null)
-            {
-                return null;
-            }
-
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            using (MemoryStream memoryStream = new MemoryStream())
-            {
-                binaryFormatter.Serialize(memoryStream, o);
-                byte[] objectDataAsStream = memoryStream.ToArray();
-                return objectDataAsStream;
-            }
-        }
-        /// <summary>
-        /// 二进制反序列化
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="stream"></param>
-        /// <returns></returns>
-        static T Deserialize<T>(byte[] stream)
-        {
-            if (stream == null)
-            {
-                return default(T);
-            }
-
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            using (MemoryStream memoryStream = new MemoryStream(stream))
-            {
-                T result = (T)binaryFormatter.Deserialize(memoryStream);
-                return result;
-            }
-        }
-        #endregion
-
     }
 
 }

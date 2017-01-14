@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace LindCore.ConfigConstants.Models
+namespace LindCore.GlobalConfig.Models
 {
     /// <summary>
     /// 配置信息实体

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LindCore
+namespace LindCore.Domain.Entities
 {
     /// <summary>
     /// 领域实体基类
     /// </summary>
     /// <typeparam name="Key">主键类型</typeparam>
-    public abstract class EntityBase<Key>
+    public abstract class EntityBase<Key> : IEntity
     {
         /// <summary>
         /// 统一主键

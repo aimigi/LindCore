@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using LindCore.ConfigConstants;
+using LindCore.GlobalConfig;
 using StackExchange.Redis;
 
 namespace LindCore.RedisClient
@@ -52,7 +52,7 @@ namespace LindCore.RedisClient
         /// <returns></returns>
         private static ConnectionMultiplexer GetManager()
         {
-            string connectionString = ConfigConstants.ConfigManager.Config.Redis.Host;
+            string connectionString = ConfigManager.Config.Redis.Host;
             if (string.IsNullOrEmpty(connectionString))
             {
                 throw new ArgumentNullException("请配置Redis连接串！");

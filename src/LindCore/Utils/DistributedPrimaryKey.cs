@@ -129,7 +129,7 @@ namespace Lind.DDD.Utils
             using (var md5 = MD5.Create())
             {
                 var host = Dns.GetHostName();
-                return md5.ComputeHash(Encoding.Default.GetBytes(host));
+                return md5.ComputeHash(Encoding.UTF8.GetBytes(host));
             }
         }
 

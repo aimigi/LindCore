@@ -15,66 +15,6 @@ namespace System.Collections.Generic
     public static class DictionaryExtensions
     {
         /// <summary>
-        /// 将字典类型转换为XML字符串
-        /// </summary>
-        /// <param name="m_values"></param>
-        /// <returns></returns>
-        public static string ToXml(this IDictionary<string, object> m_values)
-        {
-            //数据为空时不能转化为xml格式
-            if (0 == m_values.Count)
-            {
-                throw new ArgumentException("字典数据为空!");
-            }
-
-            string xml = "<xml>";
-            foreach (KeyValuePair<string, object> pair in m_values)
-            {
-                //字段值不能为null，会影响后续流程
-                if (pair.Value == null)
-                {
-                    throw new ArgumentException("字典内部含有值为null的字段!");
-                }
-                if (pair.Value.GetType() == typeof(string))
-                {
-                    xml += "<" + pair.Key + ">" + "<![CDATA[" + pair.Value + "]]></" + pair.Key + ">";
-                }
-                else
-                {
-                    xml += "<" + pair.Key + ">" + pair.Value + "</" + pair.Key + ">";
-                }
-            }
-            xml += "</xml>";
-            return xml;
-        }
-
-        /// <summary>
-        /// 从XML字符串得到字典
-        /// </summary>
-        /// <param name="xml"></param>
-        /// <returns></returns>
-        public static IDictionary<string, object> FromXml(string xml)
-        {
-            var m_values = new Dictionary<string, object>();
-            if (string.IsNullOrEmpty(xml))
-            {
-                throw new ArgumentException("将空的xml串转换为字典不合法!");
-            }
-
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(xml);
-            XmlNode xmlNode = xmlDoc.FirstChild;//获取到根节点<xml>
-            XmlNodeList nodes = xmlNode.ChildNodes;
-            foreach (XmlNode xn in nodes)
-            {
-                XmlElement xe = (XmlElement)xn;
-                m_values[xe.Name] = xe.InnerText;//获取xml的键值对到WxPayData内部的数据中
-            }
-
-            return m_values;
-        }
-
-        /// <summary>
         /// 将字典转为URL参数的格式，各值用&分开
         /// </summary>
         /// <returns></returns>
@@ -196,7 +136,7 @@ namespace System.Collections.Generic
         {
             if (obj != null)
             {
-                if (p != null && !p.PropertyType.IsValueType && p.PropertyType != typeof(string))
+                if (p != null && p.PropertyType.IsByRef && p.PropertyType != typeof(string))
                 {
 
                     var sub = p.GetValue(obj);
@@ -210,7 +150,7 @@ namespace System.Collections.Generic
                             foreach (var listSub in innerList)
                             {
                                 //集合里是简单类型，如List<int>,List<string>
-                                if (listSub.GetType().IsValueType || listSub.GetType() == typeof(string))
+                                if (!listSub.GetType().IsByRef || listSub.GetType() == typeof(string))
                                 {
                                     dic.Add(string.Join(".", prefix.Values) + "[" + j + "]", listSub.ToString());
                                 }

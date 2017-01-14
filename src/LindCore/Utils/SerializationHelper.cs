@@ -30,7 +30,7 @@ namespace LindCore.Utils
                 {
                     using (StreamWriter sw = new StreamWriter(fs, Encoding.UTF8))
                     {
-                        sw.Write(js.Serialize(obj));
+                        sw.Write(SerializeMemoryHelper.SerializeToJson(obj));
                     }
                 }
             }
@@ -48,7 +48,7 @@ namespace LindCore.Utils
                 {
                     using (StreamReader sw = new StreamReader(fs, Encoding.UTF8))
                     {
-                        return js.Deserialize<T>(sw.ReadToEnd());
+                        return SerializeMemoryHelper.DeserializeFromJson<T>(sw.ReadToEnd());
                     }
 
                 }

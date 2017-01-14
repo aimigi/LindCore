@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LindCore.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace Lind.DDD.Utils
                 }
                 catch (Exception ex)
                 {
-                    Lind.DDD.Logger.LoggerFactory.Instance.Logger_Error(ex);
+                    LoggerFactory.Logger_Error(ex);
                 }
             });
 
@@ -45,7 +46,7 @@ namespace Lind.DDD.Utils
                 }
                 catch (Exception ex)
                 {
-                    Lind.DDD.Logger.LoggerFactory.Instance.Logger_Error(ex);
+                    LoggerFactory.Logger_Error(ex);
                 }
             });
 

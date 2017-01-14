@@ -1,4 +1,4 @@
-﻿using LindCore.ConfigConstants;
+﻿using LindCore.GlobalConfig;
 using LindCore.Logger.Implements;
 using System;
 using System.Collections.Generic;

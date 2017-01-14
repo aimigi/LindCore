@@ -75,7 +75,7 @@ namespace LindCore.RedisClient
         /// <param name="obj"></param>
         public static void Push<T>(string queueName, T obj)
         {
-            RedisManager.Instance.GetDatabase().Push(queueName, obj);
+            RedisManager.Instance.GetDatabase().PushJson(queueName, obj);
         }
     }
 }
