@@ -33,7 +33,7 @@ namespace LindCore.Logger
                 case "log4net":
                     throw new ArgumentException("不支持日志方式");
                 case "mongodb":
-                    throw new ArgumentException("不支持日志方式");
+                   iLogger=
                 case "catlogger":
                     throw new ArgumentException("不支持日志方式");
                 default:
