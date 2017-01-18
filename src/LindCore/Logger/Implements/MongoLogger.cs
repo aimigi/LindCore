@@ -1,6 +1,7 @@
 ﻿
 using LindCore.Domain.Entities;
 using LindCore.GlobalConfig;
+using LindCore.MongoDbClient;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;

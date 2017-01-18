@@ -20,6 +20,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.Mongo
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.Dapper", "src\LindCore.Repositories.Dapper\LindCore.Repositories.Dapper.xproj", "{C682AF05-C2F9-46C2-83B2-ADC96003EBD3}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Manager", "src\LindCore.Manager\LindCore.Manager.xproj", "{435427E5-CDA6-4E51-83C3-95C1D63D15C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{C682AF05-C2F9-46C2-83B2-ADC96003EBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C682AF05-C2F9-46C2-83B2-ADC96003EBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C682AF05-C2F9-46C2-83B2-ADC96003EBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435427E5-CDA6-4E51-83C3-95C1D63D15C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435427E5-CDA6-4E51-83C3-95C1D63D15C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435427E5-CDA6-4E51-83C3-95C1D63D15C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435427E5-CDA6-4E51-83C3-95C1D63D15C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,5 +62,6 @@ Global
 		{413267EA-2AA7-4DE4-9DA0-5CEF323938BB} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
 		{F4498D2C-9508-48FE-A5BF-05C5BA258E79} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
 		{C682AF05-C2F9-46C2-83B2-ADC96003EBD3} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
+		{435427E5-CDA6-4E51-83C3-95C1D63D15C6} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
 	EndGlobalSection
 EndGlobal
