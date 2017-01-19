@@ -57,8 +57,16 @@ namespace LindCore.RedisClient
             {
                 throw new ArgumentNullException("请配置Redis连接串！");
             }
-            return ConnectionMultiplexer.Connect(connectionString);
+            ConfigurationOptions configuration = new ConfigurationOptions();
+            configuration.EndPoints.Add(connectionString);
+            configuration.Proxy = (Proxy)ConfigManager.Config.Redis.Proxy;
+            if (ConfigManager.Config.Redis.IsSentinel == 1)
+            {
+                configuration.TieBreaker = "";//这行在sentinel模式必须加上
+                configuration.CommandMap = CommandMap.Sentinel;
+                
+            }
+            return ConnectionMultiplexer.Connect(configuration);
         }
-
     }
 }

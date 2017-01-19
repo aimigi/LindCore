@@ -314,6 +314,8 @@ namespace LindCore.GlobalConfig.Models
         public string Host { get; set; }
         [DisplayName("StackExchange.redis代理模式（可选0:无，1：TW")]
         public int Proxy { get; set; }
+        [DisplayName("是否为sentinel模式(可选0:连接普通redis，1：连接Sentinel)")]
+         public int IsSentinel { get; set; }
         #endregion
     }
     /// <summary>
