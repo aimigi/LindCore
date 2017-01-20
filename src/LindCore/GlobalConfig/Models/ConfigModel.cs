@@ -315,7 +315,11 @@ namespace LindCore.GlobalConfig.Models
         [DisplayName("StackExchange.redis代理模式（可选0:无，1：TW")]
         public int Proxy { get; set; }
         [DisplayName("是否为sentinel模式(可选0:连接普通redis，1：连接Sentinel)")]
-         public int IsSentinel { get; set; }
+        public int IsSentinel { get; set; }
+        [DisplayName("Sentinel服务名称)")]
+        public string ServiceName { get; set; }
+        [DisplayName("Redis数据服务器的密码)")]
+        public string AuthPassword { get; set; }
         #endregion
     }
     /// <summary>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using LindCore.GlobalConfig;
 using StackExchange.Redis;
+using LindCore.Logger;
 
 namespace LindCore.RedisClient
 {
@@ -21,6 +22,32 @@ namespace LindCore.RedisClient
         /// StackExchange.Redis对象
         /// </summary>
         private static ConnectionMultiplexer instance;
+
+        /// <summary>
+        /// 代理类型
+        /// None = 0,
+        /// Twemproxy = 1,
+        /// </summary>
+        private static int proxy
+        {
+            get; set;
+        }
+        /// <summary>
+        /// 是否为sentinel服务器
+        /// yes=1,
+        /// no=0,
+        /// </summary>
+        private static int issentinel
+        {
+            get; set;
+        }
+        /// <summary>
+        /// serverName
+        /// </summary>
+        private static string serviceName
+        {
+            get; set;
+        }
 
         /// <summary>
         /// 得到StackExchange.Redis单例对象
@@ -52,21 +79,56 @@ namespace LindCore.RedisClient
         /// <returns></returns>
         private static ConnectionMultiplexer GetManager()
         {
-            string connectionString = ConfigManager.Config.Redis.Host;
-            if (string.IsNullOrEmpty(connectionString))
+            try
             {
-                throw new ArgumentNullException("请配置Redis连接串！");
+                return GetCurrentRedis();
             }
-            ConfigurationOptions configuration = new ConfigurationOptions();
-            configuration.EndPoints.Add(connectionString);
-            configuration.Proxy = (Proxy)ConfigManager.Config.Redis.Proxy;
+            catch (RedisConnectionException)//超时或者读写切换时
+            {
+
+                return GetCurrentRedis();
+            }
+        }
+
+        static ConnectionMultiplexer GetCurrentRedis()
+        {
+            var connectionString = ConfigManager.Config.Redis.Host;
+            ConnectionMultiplexer conn;
+            var option = new ConfigurationOptions();
+            option.Proxy = (Proxy)ConfigManager.Config.Redis.Proxy;//代理模式,目前支持TW
+
+            //sentinel模式下自动连接主redis
             if (ConfigManager.Config.Redis.IsSentinel == 1)
             {
-                configuration.TieBreaker = "";//这行在sentinel模式必须加上
-                configuration.CommandMap = CommandMap.Sentinel;
-                
+                var configArr = connectionString.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                configArr.ToList().ForEach(i => option.EndPoints.Add(i));
+
+                option.TieBreaker = "";//这行在sentinel模式必须加上
+                option.CommandMap = CommandMap.Sentinel;
+                conn = ConnectionMultiplexer.Connect(option);
+
+                for (int i = 0; i < option.EndPoints.Count; i++)
+                {
+                    try
+                    {
+                        connectionString = conn.GetServer(option.EndPoints[i]).SentinelGetMasterAddressByName(ConfigManager.Config.Redis.ServiceName).ToString();
+                        Console.WriteLine("当前主master[{0}]:{1}", i, connectionString);
+                        break;
+                    }
+                    catch (RedisConnectionException ex)//超时
+                    {
+                        LoggerFactory.Logger_Debug("RedisConnectionException" + ex.Message);
+                        continue;
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+
             }
-            return ConnectionMultiplexer.Connect(configuration);
+
+            return ConnectionMultiplexer.Connect(connectionString + ",password=" + ConfigManager.Config.Redis.AuthPassword);
         }
     }
 }
