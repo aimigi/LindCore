@@ -42,19 +42,19 @@ namespace LindCore.Repositories.MongoDB
         /// <summary>
         /// 服务器地址和端口
         /// </summary>
-        private static readonly string _connectionStringHost = ConfigConstants.ConfigManager.Config.MongoDB.Host;
+        private static readonly string _connectionStringHost = GlobalConfig.ConfigManager.Config.MongoDB.Host;
         /// <summary>
         /// 数据库名称
         /// </summary>
-        private static readonly string _dbName = ConfigConstants.ConfigManager.Config.MongoDB.DbName;
+        private static readonly string _dbName = GlobalConfig.ConfigManager.Config.MongoDB.DbName;
         /// <summary>
         /// 用户名
         /// </summary>
-        private static readonly string _userName = ConfigConstants.ConfigManager.Config.MongoDB.UserName;
+        private static readonly string _userName = GlobalConfig.ConfigManager.Config.MongoDB.UserName;
         /// <summary>
         /// 密码
         /// </summary>
-        private static readonly string _password = ConfigConstants.ConfigManager.Config.MongoDB.Password;
+        private static readonly string _password = GlobalConfig.ConfigManager.Config.MongoDB.Password;
 
         #endregion
 

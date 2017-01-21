@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using LindCore.GlobalConfig;
 using StackExchange.Redis;
-using LindCore.Logger;
+using LindCore.LindLogger;
 
 namespace LindCore.RedisClient
 {

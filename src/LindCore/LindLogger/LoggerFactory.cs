@@ -1,5 +1,5 @@
 ﻿using LindCore.GlobalConfig;
-using LindCore.Logger.Implements;
+using LindCore.LindLogger.Implements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LindCore.Logger
+namespace LindCore.LindLogger
 {
     /// <summary>
     /// 日志生产类

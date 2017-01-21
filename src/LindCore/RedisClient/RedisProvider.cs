@@ -1,5 +1,5 @@
 ﻿using LindCore.Commons;
-using LindCore.Logger;
+using LindCore.LindLogger;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;

@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LindCore.Logger.Implements
+namespace LindCore.LindLogger.Implements
 {
     /// <summary>
     /// 日志核心基类

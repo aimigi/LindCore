@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LindCore.Logger
+namespace LindCore.LindLogger
 {
     /// <summary>
     /// 日志级别：DEBUG|INFO|WARN|ERROR|FATAL|OFF

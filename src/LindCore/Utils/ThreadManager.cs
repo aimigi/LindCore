@@ -1,4 +1,4 @@
-﻿using LindCore.Logger;
+﻿using LindCore.LindLogger;
 using System;
 using System.Collections.Generic;
 using System.Linq;

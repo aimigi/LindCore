@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LindCore.Logger.Implements
+namespace LindCore.LindLogger.Implements
 {
     /// <summary>
     /// 空日志实现者
