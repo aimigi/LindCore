@@ -37,7 +37,7 @@ namespace LindCore.RedisClient
             redis = ConnectionMultiplexer.Connect(option);
 
             for (int i = 0; i < option.EndPoints.Count; i++)
-            { 
+            {
                 try
                 {
                     conn = redis.GetServer(option.EndPoints[i]).SentinelGetMasterAddressByName(serviceName).ToString();
