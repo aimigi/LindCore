@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
     /// <summary>
     /// 数据集控制的类型
     /// 某个用户对某个表的范围控制
     /// 用户根据当前访问的表，找到控制的查询语句，对数据进行过滤
     /// </summary>
-    public class WebDataCtrl : Lind.DDD.Domain.Entity
+    public class WebDataCtrl : LindCore.Domain.Entities.EntityInt
     {
         public WebDataCtrl()
         {

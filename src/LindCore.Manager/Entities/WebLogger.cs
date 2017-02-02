@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.DynamicData;
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
     /// <summary>
     /// 操作日志
     /// </summary>
     [TableAttribute("WebLogger")]
-    public partial class WebLogger : Lind.DDD.Domain.Entity, Lind.DDD.Domain.IOwnerBehavor
+    public partial class WebLogger : LindCore.Domain.Entities.EntityInt, LindCore.Domain.Behavors.IOwnerBehavor
     {
         /// <summary>
         /// 操作者ID

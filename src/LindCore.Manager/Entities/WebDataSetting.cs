@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
     /// <summary>
     /// 数据集控制的结果
     /// </summary>
-    public class WebDataSetting : Lind.DDD.Domain.Entity
+    public class WebDataSetting : LindCore.Domain.Entities.EntityInt
     {
         [DisplayName("数据控制的类型ID"), Required]
         public int WebDataCtrlId { get; set; }

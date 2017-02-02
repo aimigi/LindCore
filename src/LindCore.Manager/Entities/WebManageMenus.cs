@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Lind.DDD.Manager.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class WebManageMenus : Lind.DDD.Domain.Entity, Lind.DDD.TreeHelper.ITree<WebManageMenus>
+    public partial class WebManageMenus : LindCore.Domain.Entities.EntityInt, Lind.DDD.TreeHelper.ITree<WebManageMenus>
     {
         public WebManageMenus()
         {

@@ -7,14 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
-    public partial class WebManageUsers : Lind.DDD.Domain.Entity
+    public partial class WebManageUsers : LindCore.Domain.Entities.EntityInt
     {
         public WebManageUsers()
         {

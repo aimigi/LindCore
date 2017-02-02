@@ -1,16 +1,17 @@
 ﻿using Lind.DDD.Domain;
+using LindCore.Domain.Behavors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
     /// <summary>
     /// 审核记录
     /// </summary>
-    public partial class WebConfirmRecord : Entity, IAuditedBehavor
+    public partial class WebConfirmRecord : LindCore.Domain.Entities.EntityInt, IAuditedBehavor
     {
         /// <summary>
         /// 什么人编号

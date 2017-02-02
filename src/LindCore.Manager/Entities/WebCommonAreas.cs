@@ -11,8 +11,12 @@ namespace LindCore.Manager.Entities
     /// <summary>
     /// 区域表
     /// </summary>
-    public class WebCommonAreas : IEntity, TreeHelper.ITree<WebCommonAreas>
+    public class WebCommonAreas : LindCore.Domain.Entities.EntityInt
+, TreeHelper.ITree<WebCommonAreas>
     {
+        /// <summary>
+        /// 编辑
+        /// </summary>
         public int ID { get; set; }
         public string Name { get; set; }
         public int? ParentId { get; set; }

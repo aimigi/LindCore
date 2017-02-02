@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Lind.DDD.Manager.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class WebDepartments : Lind.DDD.Domain.Entity, Lind.DDD.TreeHelper.ITree<WebDepartments>
+    public partial class WebDepartments : LindCore.Domain.Entities.EntityInt, LindCore.TreeHelper.ITree<WebDepartments>
     {
         public WebDepartments()
         {

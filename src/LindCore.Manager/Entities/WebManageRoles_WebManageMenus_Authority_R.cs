@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lind.DDD.Manager.Models
+namespace LindCore.Manager.Models
 {
-    public partial class WebManageRoles_WebManageMenus_Authority_R : Lind.DDD.Domain.Entity
+    public partial class WebManageRoles_WebManageMenus_Authority_R : LindCore.Domain.Entities.EntityInt
     {
         public int RoleId { get; set; }
         public int MenuId { get; set; }
