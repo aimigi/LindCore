@@ -10,6 +10,8 @@ namespace LindCore.Manager.Controllers
     {
         public IActionResult Index()
         {
+            var db = new ManagerContext();
+            var dd = db.UserTest.ToList();
             return View();
         }
 

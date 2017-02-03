@@ -3,6 +3,7 @@
 
   "dependencies": {
     "Autofac": "4.2.1",
+    "Autofac.Configuration": "4.0.1",
     "CoreCompat.System.ComponentModel.DataAnnotations": "4.2.3-r7",
     "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",

@@ -1,11 +1,8 @@
 ﻿using Autofac;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lind.DDD.IoC.Implements
+namespace LindCore.IoC.Implements
 {
     /// <summary>
     /// autofac提供的IoC容器

@@ -9,12 +9,12 @@
 // http://microsoftnlayerapp.codeplex.com/license
 //===================================================================================
 
-using Lind.DDD.IoC.Implements;
+using LindCore.GlobalConfig;
+using LindCore.IoC.Implements;
 using System;
-using System.Collections.Generic;
 
 
-namespace Lind.DDD.IoC
+namespace LindCore.IoC
 {
     /// <summary>
     /// IoCFactory  implementation 
@@ -67,11 +67,10 @@ namespace Lind.DDD.IoC
 
         private IoCFactory()
         {
-            switch (ConfigConstants.ConfigManager.Config.IocContaion.IoCType)
+            switch (ConfigManager.Config.IocContaion.IoCType)
             {
                 case 0:
-                    _CurrentContainer = new UnityAdapterContainer();
-                    break;
+                    throw new ArgumentException("不支持此IoC类型");
                 case 1:
                     _CurrentContainer = new AutofacAdapterContainer();
                     break;

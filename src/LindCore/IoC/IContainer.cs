@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Lind.DDD.IoC
+namespace LindCore.IoC
 {
     /// <summary>
     /// IoC容器规范

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LindCore.Commons
 {
@@ -99,46 +100,6 @@ namespace LindCore.Commons
             return xml;
         }
 
-        /**
-        * @将xml转为WxPayData对象并返回对象内部的数据
-        * @param string 待转换的xml串
-        * @return 经转换得到的Dictionary
-        * @throws WxPayException
-        */
-        public SortedDictionary<string, object> FromXml(string xml)
-        {
-            if (string.IsNullOrEmpty(xml))
-            {
-                LindLogger.LoggerFactory.Logger_Info(this.GetType().ToString() + "将空的xml串转换为WxPayData不合法!");
-                throw new LindException("将空的xml串转换为WxPayData不合法!");
-            }
-
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.LoadXml(xml);
-            XmlNode xmlNode = xmlDoc.FirstChild;//获取到根节点<xml>
-            XmlNodeList nodes = xmlNode.ChildNodes;
-            foreach (XmlNode xn in nodes)
-            {
-                XmlElement xe = (XmlElement)xn;
-                m_values[xe.Name] = xe.InnerText;//获取xml的键值对到WxPayData内部的数据中
-            }
-
-            try
-            {
-                //2015-06-29 错误是没有签名
-                if (m_values["return_code"] != "SUCCESS")
-                {
-                    return m_values;
-                }
-                CheckSign();//验证签名,不通过会抛异常
-            }
-            catch (LindException ex)
-            {
-                throw new LindException(ex.Message);
-            }
-
-            return m_values;
-        }
 
         /**
         * @Dictionary格式转化成url参数格式

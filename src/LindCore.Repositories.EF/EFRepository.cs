@@ -3,12 +3,7 @@ using LindCore.LindLogger;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LindCore.Repositories.EF
 {
@@ -78,8 +73,7 @@ namespace LindCore.Repositories.EF
                 this.SaveChanges();
             }
         }
-       
-         public IQueryable<TEntity> GetModel()
+        public IQueryable<TEntity> GetModel()
         {
             return Db.Set<TEntity>();
         }
@@ -111,8 +105,6 @@ namespace LindCore.Repositories.EF
             }
             this.SaveChanges();
         }
-
-
         public void Update(IEnumerable<TEntity> item)
         {
             #region 1个SQL连接,发N条语句，事务级
@@ -150,30 +142,23 @@ namespace LindCore.Repositories.EF
         #endregion
 
         #region IExtensionRepository<TEntity> 成员
-
         public IQueryable<TEntity> GetModel(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return GetModel().Where(predicate);
         }
-
         public TEntity Find(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             return GetModel().FirstOrDefault(predicate);
         }
-
-
-
         #endregion
 
         #region IOrderableRepository<TEntity> 成员
-
         public IQueryable<TEntity> GetModel(Action<IRepositories.IOrderable<TEntity>> orderBy)
         {
             var linq = new Orderable<TEntity>(GetModel());
             orderBy(linq);
             return linq.Queryable;
         }
-
         public IQueryable<TEntity> GetModel(Action<IRepositories.IOrderable<TEntity>> orderBy, System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             var queryable = GetModel().Where(predicate).AsQueryable();
@@ -181,7 +166,6 @@ namespace LindCore.Repositories.EF
             orderBy(linq);
             return linq.Queryable;
         }
-
         #endregion
 
         #region Fields
@@ -202,11 +186,7 @@ namespace LindCore.Repositories.EF
         protected virtual int DataPageSize { get; set; }
         #endregion
 
-        #region Private Methods
-
-
-
-     
+        #region IExtensionRepository<TEntity> 成员
 
         public void BulkInsert(IEnumerable<TEntity> item, bool isRemoveIdentity)
         {
@@ -232,8 +212,6 @@ namespace LindCore.Repositories.EF
         {
             throw new NotImplementedException();
         }
-
-
         #endregion
 
 

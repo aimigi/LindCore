@@ -15,7 +15,7 @@ namespace LindCore.Manager.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class WebManageMenus : LindCore.Domain.Entities.EntityInt, Lind.DDD.TreeHelper.ITree<WebManageMenus>
+    public partial class WebManageMenus : LindCore.Domain.Entities.EntityInt, LindCore.TreeHelper.ITree<WebManageMenus>
     {
         public WebManageMenus()
         {

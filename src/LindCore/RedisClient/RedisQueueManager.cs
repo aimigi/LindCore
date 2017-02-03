@@ -1,4 +1,5 @@
-﻿using StackExchange.Redis;
+﻿using LindCore.LindLogger;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,14 +46,14 @@ namespace LindCore.RedisClient
                                   var entity = RedisManager.Instance.GetDatabase().PopJson<T>(queueName);
                                   if (entity != null)
                                   {
-                                      Logger.LoggerFactory.Logger_Info("实时队列：" + queueName);
+                                      LoggerFactory.Logger_Info("实时队列：" + queueName);
                                       action(entity);
                                   }
                               }
                           }
                           catch (Exception ex)
                           {
-                              Logger.LoggerFactory.Logger_Info("实时队列出现异常：" + ex.Message);
+                              LoggerFactory.Logger_Info("实时队列出现异常：" + ex.Message);
                               Thread.Sleep(5000);
                           }
 
@@ -61,7 +62,7 @@ namespace LindCore.RedisClient
                   }
                   catch (Exception ex)
                   {
-                      Logger.LoggerFactory.Logger_Info("Redis连接串出现异常：" + ex.Message);
+                      LoggerFactory.Logger_Info("Redis连接串出现异常：" + ex.Message);
                       Thread.Sleep(5000);
                   }
 

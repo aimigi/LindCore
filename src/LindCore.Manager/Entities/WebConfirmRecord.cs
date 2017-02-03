@@ -1,10 +1,4 @@
-﻿using Lind.DDD.Domain;
-using LindCore.Domain.Behavors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LindCore.Domain.Behavors;
 
 namespace LindCore.Manager.Models
 {

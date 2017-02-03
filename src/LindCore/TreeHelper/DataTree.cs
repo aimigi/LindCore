@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using LindCore.Domain.Entities;
 using LindCore.IRepositories;
+using LindCore.IoC;
 
 namespace LindCore.TreeHelper
 {
@@ -24,7 +25,7 @@ namespace LindCore.TreeHelper
             IRepository<WebAuthorityCommands> repository;
             try
             {
-                repository = Lind.DDD.IoC.ServiceLocator.Instance.GetService<IRepository<WebAuthorityCommands>>();
+                repository = ServiceLocator.Instance.GetService<IRepository<WebAuthorityCommands>>();
             }
             catch (Exception)
             {
@@ -246,7 +247,7 @@ namespace LindCore.TreeHelper
             if (!displayAuthority && entity.Authority > 0)
             {
                 html.Append("<span>【");
-                html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForSpanHtmlTags(null, name + entity.Id + "Authority", null, entity.Authority));
+              //  html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForSpanHtmlTags(null, name + entity.Id + "Authority", null, entity.Authority));
                 html.Append("】</span>");
             }
 
@@ -262,7 +263,7 @@ namespace LindCore.TreeHelper
                     if (authority != null)
                         authorityVal = authority.Item2;
                 }
-                html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForCheckboxHtmlTags(null, name + entity.Id + "Authority", null, authorityVal, entity.Authority));
+               // html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForCheckboxHtmlTags(null, name + entity.Id + "Authority", null, authorityVal, entity.Authority));
                 html.Append("</span>");
                 html.Append("】<span>");
             }
