@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     /// <summary>
     /// 数据集控制的类型

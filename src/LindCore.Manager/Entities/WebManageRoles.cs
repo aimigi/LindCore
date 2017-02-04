@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -30,8 +30,6 @@ namespace LindCore.Manager.Models
         public int SortNumber { get; set; }
         [DisplayName("最后操作人")]
         public string Operator { get; set; }
-        [DisplayName("部门"), Required]
-        public int DepartmentID { get; set; }
 
         public virtual WebDepartments WebDepartments { get; set; }
         public virtual ICollection<WebManageRoles_WebManageMenus_Authority_R> WebManageRoles_WebManageMenus_Authority_R { get; set; }

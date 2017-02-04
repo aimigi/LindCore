@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     /// <summary>
     /// 操作日志

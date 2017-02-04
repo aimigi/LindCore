@@ -1,5 +1,5 @@
 ﻿using LindCore.Domain.Entities;
-using LindCore.Manager.Models;
+using LindCore.Manager.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LindCore.Manager
@@ -23,13 +23,18 @@ namespace LindCore.Manager
 
             base.OnConfiguring(optionsBuilder);
         }
-        public DbSet<UserTest> UserTest { get; set; }
 
+        public DbSet<WebDataSetting> WebDataSetting { get; set; }
+        public DbSet<WebDataCtrl> WebDataCtrl { get; set; }
+        public DbSet<WebManageUsers> WebManageUsers { get; set; }
+        public DbSet<WebManageRoles> WebManageRoles { get; set; }
+        public DbSet<WebManageMenus> WebManageMenus { get; set; }
+        public DbSet<WebDepartments> WebDepartments { get; set; }
+        public DbSet<WebConfirmRecord> WebConfirmRecord { get; set; }
+        public DbSet<WebManageRoles_WebManageMenus_Authority_R> WebManageRoles_WebManageMenus_Authority_R { get; set; }
+        public DbSet<WebLogger> WebLogger { get; set; }
+        public DbSet<WebAuthorityCommands> WebAuthorityCommands { get; set; }
     }
 
-    public class UserTest : EntityInt
-    {
-        public string Name { get; set; }
-    }
 }
 

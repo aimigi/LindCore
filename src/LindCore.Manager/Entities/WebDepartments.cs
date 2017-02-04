@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -15,14 +15,13 @@ namespace LindCore.Manager.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class WebDepartments : LindCore.Domain.Entities.EntityInt, LindCore.TreeHelper.ITree<WebDepartments>
+    public partial class WebDepartments : LindCore.Domain.Entities.EntityInt
     {
         public WebDepartments()
         {
             this.WebManageRoles = new List<WebManageRoles>();
             this.WebManageUsers = new List<WebManageUsers>();
             this.Sons = new List<WebDepartments>();
-            this.LinkUrl = string.Empty;
         }
         [DisplayName("部门名称"), Required]
         public string Name { get; set; }
@@ -34,41 +33,12 @@ namespace LindCore.Manager.Models
         public string Operator { get; set; }
         [DisplayName("級別"), Required]
         public int Level { get; set; }
-        [DisplayName("父ID")]
-        public Nullable<int> ParentID { get; set; }
 
         public virtual IList<WebDepartments> Sons { get; set; }
         public virtual WebDepartments Father { get; set; }
         public virtual IList<WebManageRoles> WebManageRoles { get; set; }
         public virtual IList<WebManageUsers> WebManageUsers { get; set; }
 
-        #region ITree 成员
 
-
-        public bool IsLeaf
-        {
-            get { return this.Sons == null || this.Sons.Count == 0; }
-        }
-        /// <summary>
-        /// 不序列化到数据库
-        /// </summary>
-        [NotMapped]
-        public string LinkUrl
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// 不序列化到数据库
-        /// </summary>
-        [NotMapped]
-        public long Authority
-        {
-            get;
-            set;
-        }
-
-        #endregion
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace LindCore.Manager.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class WebManageMenus : LindCore.Domain.Entities.EntityInt, LindCore.TreeHelper.ITree<WebManageMenus>
+    public partial class WebManageMenus : LindCore.Domain.Entities.EntityInt
     {
         public WebManageMenus()
         {
@@ -38,8 +38,7 @@ namespace LindCore.Manager.Models
         public string Operator { get; set; }
         [DisplayName("是否显示在菜单树上"), Required]
         public bool IsDisplayMenuTree { get; set; }
-        [DisplayName("父ID")]
-        public Nullable<int> ParentID { get; set; }
+
         /// <summary>
         /// 在菜单对应的页面上显示的命令按钮列表，64位无符号，操作删除，这个位将被回收
         /// </summary>
@@ -49,14 +48,6 @@ namespace LindCore.Manager.Models
         public virtual WebManageMenus Father { get; set; }
         public virtual ICollection<WebManageRoles_WebManageMenus_Authority_R> WebManageRoles_WebManageMenus_Authority_R { get; set; }
 
-        #region ITree 成员
 
-
-        public bool IsLeaf
-        {
-            get { return this.Sons == null || this.Sons.Count == 0; }
-        }
-
-        #endregion
     }
 }

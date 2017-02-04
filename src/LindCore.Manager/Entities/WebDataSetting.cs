@@ -6,18 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     /// <summary>
     /// 数据集控制的结果
     /// </summary>
     public class WebDataSetting : LindCore.Domain.Entities.EntityInt
     {
-        [DisplayName("数据控制的类型ID"), Required]
-        public int WebDataCtrlId { get; set; }
         [DisplayName("角色编号"), Required]
-        public int WebManageRolesId { get; set; }
-        [DisplayName("被授予的结果ID集合"), Required]
         public string ObjectIdArr { get; set; }
         [DisplayName("部门编号"), Required]
         public int WebDepartmentsId { get; set; }

@@ -9,9 +9,10 @@ using LindCore.Domain.Entities;
 namespace LindCore.Manager.Migrations
 {
     [DbContext(typeof(ManagerContext))]
-    partial class ManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20170204011448_init0")]
+    partial class init0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -115,11 +116,11 @@ namespace LindCore.Manager.Migrations
 
                     b.Property<string>("ObjectNameArr");
 
-                    b.Property<int?>("WebDataCtrlId");
+                    b.Property<int>("WebDataCtrlId");
 
                     b.Property<int>("WebDepartmentsId");
 
-                    b.Property<int?>("WebManageRolesId");
+                    b.Property<int>("WebManageRolesId");
 
                     b.HasKey("Id");
 
@@ -149,6 +150,8 @@ namespace LindCore.Manager.Migrations
                         .IsRequired();
 
                     b.Property<string>("Operator");
+
+                    b.Property<int?>("ParentID");
 
                     b.Property<int>("SortNumber");
 
@@ -217,6 +220,8 @@ namespace LindCore.Manager.Migrations
 
                     b.Property<string>("Operator");
 
+                    b.Property<int?>("ParentID");
+
                     b.Property<int>("SortNumber");
 
                     b.HasKey("Id");
@@ -234,6 +239,8 @@ namespace LindCore.Manager.Migrations
                     b.Property<string>("About");
 
                     b.Property<DateTime>("AddTime");
+
+                    b.Property<int>("DepartmentID");
 
                     b.Property<DateTime>("LastedTime");
 
@@ -263,6 +270,10 @@ namespace LindCore.Manager.Migrations
                     b.Property<long>("Authority");
 
                     b.Property<DateTime>("LastedTime");
+
+                    b.Property<int>("MenuId");
+
+                    b.Property<int>("RoleId");
 
                     b.Property<int?>("WebManageMenusId");
 
@@ -326,11 +337,13 @@ namespace LindCore.Manager.Migrations
                 {
                     b.HasOne("LindCore.Manager.Entities.WebDataCtrl", "WebDataCtrl")
                         .WithMany("WebDataSetting")
-                        .HasForeignKey("WebDataCtrlId");
+                        .HasForeignKey("WebDataCtrlId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("LindCore.Manager.Entities.WebManageRoles", "WebManageRoles")
                         .WithMany("WebDataSetting")
-                        .HasForeignKey("WebManageRolesId");
+                        .HasForeignKey("WebManageRolesId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("LindCore.Manager.Entities.WebDepartments", b =>

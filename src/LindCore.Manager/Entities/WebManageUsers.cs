@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -18,8 +18,6 @@ namespace LindCore.Manager.Models
     {
         public WebManageUsers()
         {
-            this.WebManageRoles = new HashSet<WebManageRoles>();
-            this.WebDepartments = new HashSet<WebDepartments>();
         }
         [DisplayName("登陆名"), Required]
         public string LoginName { get; set; }
@@ -43,7 +41,7 @@ namespace LindCore.Manager.Models
         [DisplayName("员工工号")]
         public string ThridUserId { get; set; }
 
-        public virtual ICollection<WebManageRoles> WebManageRoles { get; set; }
-        public virtual ICollection<WebDepartments> WebDepartments { get; set; }
+        public virtual WebManageRoles WebManageRoles { get; set; }
+        public virtual WebDepartments WebDepartments { get; set; }
     }
 }

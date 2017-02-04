@@ -1,6 +1,6 @@
 ﻿using LindCore.Domain.Behavors;
 
-namespace LindCore.Manager.Models
+namespace LindCore.Manager.Entities
 {
     /// <summary>
     /// 审核记录
