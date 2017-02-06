@@ -22,33 +22,6 @@ namespace LindCore.RedisClient
         /// StackExchange.Redis对象
         /// </summary>
         private static ConnectionMultiplexer instance;
-
-        /// <summary>
-        /// 代理类型
-        /// None = 0,
-        /// Twemproxy = 1,
-        /// </summary>
-        private static int proxy
-        {
-            get; set;
-        }
-        /// <summary>
-        /// 是否为sentinel服务器
-        /// yes=1,
-        /// no=0,
-        /// </summary>
-        private static int issentinel
-        {
-            get; set;
-        }
-        /// <summary>
-        /// serverName
-        /// </summary>
-        private static string serviceName
-        {
-            get; set;
-        }
-
         /// <summary>
         /// 得到StackExchange.Redis单例对象
         /// </summary>

@@ -18,14 +18,17 @@
     "RepeatNum": 10
   },
   "MongoDB": {
-    "Host": "192.168.2.21:27017",
-    "DbName": "TsingDa_NewLearningBar",
+    "Host": "localhost:27017",
+    "DbName": "Test",
     "UserName": "",
     "Password": ""
   },
   "Redis": {
     "Host": "localhost:6379",
-    "Proxy": 0
+    "Proxy": 0,
+    "IsSentinel": 0,
+    "ServiceName": null,
+    "AuthPassword": null
   },
   "Messaging": {
     "Email_UserName": "仓储大叔",

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
- using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -25,10 +25,8 @@ namespace LindCore.LindLogger.Implements
         {
             get
             {
-                 
-                    return Path.Combine(Directory.GetCurrentDirectory(), "LoggerDir");
-             }
-
+                return Path.Combine(Directory.GetCurrentDirectory(), "LoggerDir");
+            }
         }
 
         /// <summary>
