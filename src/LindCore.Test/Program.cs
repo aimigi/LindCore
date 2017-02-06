@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LindCore.Test
@@ -15,6 +16,11 @@ namespace LindCore.Test
     {
         public static void Main(string[] args)
         {
+            for (int i = 0; i < 100; i++)
+            {
+                RedisClient.RedisManager.Instance.GetDatabase().StringIncrement(DateTime.Now.ToString("yyyyMMddHHmm") + "::" + DateTime.Now.Second);
+                Thread.Sleep(100);
+            }
             LoggerFactory.Logger_Debug("test...");
             Console.WriteLine("Lind for .NetCore Platform!");
             Console.WriteLine(Hello);
