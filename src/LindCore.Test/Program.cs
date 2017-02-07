@@ -16,6 +16,12 @@ namespace LindCore.Test
     {
         public static void Main(string[] args)
         {
+
+            string Mobile = "13521972991";
+            Mobile = string.IsNullOrEmpty(Mobile) ? "" : Mobile.Substring(0, 3) + Mobile.Substring(3, 4).Replace(Mobile.Substring(3, 4), "****") + Mobile.Substring(7);
+
+            var a = DateTime.Parse("23:59");
+
             for (int i = 0; i < 100; i++)
             {
                 RedisClient.RedisManager.Instance.GetDatabase().StringIncrement(DateTime.Now.ToString("yyyyMMddHHmm") + "::" + DateTime.Now.Second);
