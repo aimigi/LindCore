@@ -9,11 +9,10 @@ namespace LindCore.Domain.Entities
 {
     public class EntityStr : EntityBase<string>
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public override string Id
+
+        public EntityStr()
         {
-            get; set;
+            base.Id = ObjectId.GenerateNewId().ToString();
         }
     }
 }

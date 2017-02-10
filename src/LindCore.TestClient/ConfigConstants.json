@@ -9,7 +9,7 @@
     "FilePath": "FileQueue"
   },
   "Logger": {
-    "Type": "mongodb",
+    "Type": "File",
     "Level": "DEBUG",
     "ProjectName": "Lind.DDD"
   },
@@ -18,8 +18,8 @@
     "RepeatNum": 10
   },
   "MongoDB": {
-    "Host": "192.168.2.21:27017",
-    "DbName": "TsingDa_NewLearningBar",
+    "Host": "localhost:27017",
+    "DbName": "Test",
     "UserName": "",
     "Password": ""
   },

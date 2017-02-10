@@ -29,6 +29,7 @@ namespace LindCore.GlobalConfig.Models
             Versions = new List<Version>();
             IocContaion = new IocContainer();
             LindMQ = new LindMQ();
+            LindSocket = new LindSocket();
         }
 
         /// <summary>
@@ -109,6 +110,10 @@ namespace LindCore.GlobalConfig.Models
         /// LindMQ配置
         /// </summary>
         public LindMQ LindMQ { get; set; }
+        /// <summary>
+        /// LindSocket通讯组件
+        /// </summary>
+        public LindSocket LindSocket { get; set; }
     }
 
     /// <summary>
@@ -460,7 +465,6 @@ namespace LindCore.GlobalConfig.Models
         public int IoCType { get; set; }
         /// 数据集缓存策略：EntLib,Redis
         /// </summary>
-
         public string AoP_CacheStrategy { get; set; }
     }
 
@@ -500,23 +504,38 @@ namespace LindCore.GlobalConfig.Models
         /// <summary>
         /// LindMQ统一键前缀
         /// </summary>
-
         public string LindMqKey { get; set; }
         /// <summary>
         /// LindMQ所有Topic需要存储到这个键里
         /// </summary>
-
         public string LindMq_TopicKey { get; set; }
         /// <summary>
         /// 每个消费者的消费进度
         /// </summary>
-
         public string QueueOffsetKey { get; set; }
         /// <summary>
         /// 消息自动回收的周期（天）
         /// </summary>
-
         public int AutoEmptyForDay { get; set; }
     }
 
+    public class LindSocket
+    {
+        /// <summary>
+        /// 服务端地址
+        /// </summary>
+        public string Host { get; set; }
+        /// <summary>
+        /// 通讯端口
+        /// </summary>
+        public int Port { get; set; }
+        /// <summary>
+        /// 服务端最大监听数
+        /// </summary>
+        public int ListenMaxCount { get; set; }
+        /// <summary>
+        /// 缓冲大小byte
+        /// </summary>
+        public int BufferSize { get; set; }
+    }
 }

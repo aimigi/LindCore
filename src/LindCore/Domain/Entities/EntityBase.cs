@@ -11,6 +11,11 @@ namespace LindCore.Domain.Entities
     /// <typeparam name="Key">主键类型</typeparam>
     public abstract class EntityBase<Key> : IEntity
     {
+        public EntityBase()
+        {
+            AddTime = DateTime.Now;
+            LastedTime = DateTime.Now;
+        }
         /// <summary>
         /// 统一主键
         /// </summary>

@@ -67,6 +67,11 @@ namespace LindCore.GlobalConfig
             _init.LindMQ.LindMq_TopicKey = "Lind_MQ_Topic";
             _init.LindMQ.LindMqKey = "Lind_MQ_";
             _init.LindMQ.QueueOffsetKey = "Lind_MQ_ConsumerOffset";
+            _init.LindSocket.BufferSize = 4096;
+            _init.LindSocket.Host = "127.0.0.1";
+            _init.LindSocket.Port = 8484;
+            _init.LindSocket.ListenMaxCount = 20;
+
 
             string[] blacklist = {
                                      "System",
