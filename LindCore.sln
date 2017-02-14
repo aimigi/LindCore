@@ -26,7 +26,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.TestClient", "src\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{C83CFDED-605D-4C0B-B910-AD4760E0B666}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.Memory", "LindCore.Repositories.Memory\LindCore.Repositories.Memory.xproj", "{3504F6BF-BDCA-4222-9806-975A0BDC4EC8}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.Memory", "src\LindCore.Repositories.Memory\LindCore.Repositories.Memory.xproj", "{3504F6BF-BDCA-4222-9806-975A0BDC4EC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
