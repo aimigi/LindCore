@@ -17,7 +17,7 @@ namespace LindCore.LindSocket
     {
         public static void Send(byte[] data, Action<byte[]> callBack)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+           // Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var result = new byte[GlobalConfig.ConfigManager.Config.LindSocket.BufferSize];
             //设定服务器IP地址  
             IPAddress ip = IPAddress.Parse(GlobalConfig.ConfigManager.Config.LindSocket.Host);

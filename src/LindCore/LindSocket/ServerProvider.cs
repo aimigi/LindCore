@@ -19,7 +19,7 @@ namespace LindCore.LindSocket
         /// </summary>
         public static void Start(Action<byte[]> callAction)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+           // Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             //服务器IP地址  
             IPAddress ip = IPAddress.Parse(GlobalConfig.ConfigManager.Config.LindSocket.Host);
             var serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
