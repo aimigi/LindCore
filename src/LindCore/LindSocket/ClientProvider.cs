@@ -11,6 +11,7 @@ namespace LindCore.LindSocket
     /// <summary>
     /// 客户端-提供者
     /// Author:Lind
+    /// Date:2017-02-14
     /// </summary>
     public class ClientProvider
     {
