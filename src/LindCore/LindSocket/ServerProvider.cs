@@ -32,7 +32,6 @@ namespace LindCore.LindSocket
                 clientSocket.Send(NetworkBitConverter.GetBytes($"与服务器{GlobalConfig.ConfigManager.Config.LindSocket.Host}连接成功..."));//发送数据到客户端
                 Thread receiveThread = new Thread(ReceiveMessage);
                 receiveThread.Start(clientSocket);
-
             }
         }
 
@@ -51,7 +50,6 @@ namespace LindCore.LindSocket
                     byte[] result = new byte[4096];
                     //通过clientSocket接收数据  
                     int receiveNumber = myClientSocket.Receive(result);//从连接的 System.Net.Sockets.Socket 对象中接收数据
-                                                                       // callAction(result);
                     Console.WriteLine($"接收客户端:{myClientSocket.RemoteEndPoint.ToString()},消息:{LindSocket.NetworkBitConverter.ToString(result)}");
                 }
                 catch (Exception ex)
