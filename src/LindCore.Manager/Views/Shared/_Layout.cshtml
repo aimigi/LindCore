@@ -16,8 +16,74 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link href="~/lib/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" />
     </environment>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+        <script src="~/js/markdown.js"></script>
+        <script src="~/js/to-markdown.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/lib/bootstrap-markdown/js/bootstrap-markdown.js"></script>
+        <script src="~/js/markdown.js"></script>
+        <script src="~/js/to-markdown.js"></script>
+    </environment>
+
+
+    <script>
+        // document.domain = "caibaojian.com";
+        function setIframeHeight(iframe) {
+            if (iframe) {
+                var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+                if (iframeWin.document.body) {
+                    iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+                }
+            }
+        };
+
+        window.onload = function () {
+            setIframeHeight(document.getElementById('NoPermissioniframe'));
+        };
+
+        function detailFun(frameSrc) {
+            $("#NoPermissioniframe").attr("src", frameSrc);
+            $('#NoPermissionModal').modal({ show: true, backdrop: 'static' });
+        }
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+
+
+
 </head>
 <body>
+    <div class="modal fade" id="NoPermissionModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+                    <h4 class="modal-title" id="NoPermissionModalLabel">后台系统</h4>
+                </div>
+                <div class="modal-body">
+                    <iframe id="NoPermissioniframe" frameborder="0" scrolling="no" onload="setIframeHeight(this)"></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">关  闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -65,28 +131,6 @@
         </footer>
     </div>
 
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/lib/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-        <script src="~/js/markdown.js"></script>
-        <script src="~/js/to-markdown.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/lib/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-        <script src="~/js/markdown.js"></script>
-        <script src="~/js/to-markdown.js"></script>
-    </environment>
 
-
-    @RenderSection("scripts", required: false)
 </body>
 </html>

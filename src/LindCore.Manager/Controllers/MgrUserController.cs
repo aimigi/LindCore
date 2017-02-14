@@ -11,18 +11,17 @@ namespace LindCore.Manager.Controllers
 {
     public class MgrUserController : Controller
     {
-        private readonly ILogger _logger;
+
         ManagerContext _context;
-        public MgrUserController(ManagerContext context, ILogger logger)
+        public MgrUserController(ManagerContext context)
         {
             _context = context;
-            _logger = logger;
+
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
-            _logger.LogDebug("LogDebug MgrUser/Index");
-            _logger.LogInformation("LogInformation MgrUser/Index");
+
             return View(_context.WebManageUsers.ToList());
         }
         public IActionResult Detail(int id)

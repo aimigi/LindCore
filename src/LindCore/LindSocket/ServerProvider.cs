@@ -29,7 +29,7 @@ namespace LindCore.LindSocket
             while (true)
             {
                 Socket clientSocket = serverSocket.Accept(); //接受一个传入的连接
-                clientSocket.Send(NetworkBitConverter.GetBytes($"与服务器{GlobalConfig.ConfigManager.Config.LindSocket.Host}连接成功..."));//发送数据到客户端
+                clientSocket.Send(NetworkBitConverter.GetBytes("与服务器连接成功..."));//发送数据到客户端
                 Thread receiveThread = new Thread(ReceiveMessage);
                 receiveThread.Start(clientSocket);
             }

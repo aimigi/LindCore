@@ -14,6 +14,7 @@ namespace LindCore.Repositories.MongoDB
 {
     /// <summary>
     /// MongoDB进行持久化
+    /// Author:Lind
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     public class MongoRepository<TEntity> :
