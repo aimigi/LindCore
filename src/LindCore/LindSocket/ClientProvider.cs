@@ -10,6 +10,7 @@ namespace LindCore.LindSocket
 {
     /// <summary>
     /// 客户端-提供者
+    /// Author:Lind
     /// </summary>
     public class ClientProvider
     {
