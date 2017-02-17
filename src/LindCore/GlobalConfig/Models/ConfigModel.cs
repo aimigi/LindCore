@@ -323,7 +323,7 @@ namespace LindCore.GlobalConfig.Models
         public int IsSentinel { get; set; }
         [DisplayName("Sentinel服务名称)")]
         public string ServiceName { get; set; }
-        [DisplayName("Redis数据服务器的密码)")]
+        [DisplayName("Sentinel模式下Redis数据服务器的密码)")]
         public string AuthPassword { get; set; }
         #endregion
     }

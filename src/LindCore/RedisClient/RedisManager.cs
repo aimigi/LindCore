@@ -63,6 +63,10 @@ namespace LindCore.RedisClient
             }
         }
 
+        /// <summary>
+        /// 每个连接串用逗号分开,sentinel不支持密码
+        /// </summary>
+        /// <returns></returns>
         static ConnectionMultiplexer GetCurrentRedis()
         {
             var connectionString = ConfigManager.Config.Redis.Host;
