@@ -1,24 +1,51 @@
-﻿using LindCore.LindLogger;
+﻿using LindCore.CacheConfigFile;
+using LindCore.LindLogger;
 using LindCore.RedisClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace LindCore.Test
 {
-    class Test
+    class Son
     {
         public string Name { get; set; }
+        public string Email { get; set; }
+        public int[] Age { get; set; }
+    }
+    class Test : IConfiger
+    {
+        public Test()
+        {
+            this.Name = "爸爸";
+            this.Email = "father@sina.com";
+            this.Age = new int[] { 15, 37, 48, 76 };
+            Sons = new List<Son> {
+                new Son {
+                    Age= new int[] { 1,3,5},
+                    Name="zzl1'son",
+                    Email="son1@siona.com"
+                 },
+                  new Son {
+                    Age= new int[] { 2,4,6},
+                    Name="zzl2'son",
+                    Email="son2@siona.com"
+                 }
+            };
+        }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public int[] Age { get; set; }
+        public List<Son> Sons { get; set; }
     }
     public class Program
     {
         public static void Main(string[] args)
         {
+            var obj = LindCore.CacheConfigFile.ConfigFactory.Instance.GetConfig<Test>();
             LoggerFactory.Logger_Debug("test...");
             LoggerFactory.Logger_Fatal("fatal test...");
             LoggerFactory.Logger_Info("info test...");
