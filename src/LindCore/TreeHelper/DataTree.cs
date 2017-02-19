@@ -105,8 +105,8 @@ namespace LindCore.TreeHelper
             html.Append("<div id='" + name + "_Tree'><ul style='list-style-type:none'>");
             this.GetTree(html, GetCompleteTree(level), name, selectValue, radioButton, controller, displayButton, onlyLeafButton, displayAuthority, menuAuthority: menuAuthority);
             html.Append("</ul></div>");
-            //  html.Append("<script type='text/javascript'> $(function () {$(document).on('click', 'input[name=" + name + "][type=checkbox]', function () {$(this).closest('li').find('ul').find('input[name=" + name + "][type=checkbox]').prop('checked', this.checked);});});</script>");
 
+            #region 前台HTML组织
             html.Append(@"<script type='text/javascript'>
                                 $(function () {
                                     $('input[type=checkbox][name=" + name + @"]').each(function () {
@@ -143,7 +143,7 @@ namespace LindCore.TreeHelper
                                     var range = false;
                             
                                     //当前选项是否为同级被选中的节点,选中自己，一定要选祖宗，取消自己，不一定取消祖宗
-                                    if (this.checked || $(this).closest('ul').find('input[name=" + name + @"]:checked').size() == 0) {
+                                    if (this.checked || $(this ).closest('ul').find('input[name=" + name + @"]:checked').size() == 0) {
                                         range = true;
                                     }
                                     getParent(this, this.checked, range);
@@ -176,6 +176,7 @@ namespace LindCore.TreeHelper
                             
                                 }
                             }); </script>");
+            #endregion
 
             return html.ToString();
         }
@@ -237,9 +238,9 @@ namespace LindCore.TreeHelper
             {
 
                 html.Append(
-              @"<a href='/" + controller + "/Create?id=" + entity.Id + "'>新建</a>" +
-              @"<a href='/" + controller + "/Delete?id=" + entity.Id + "' onclick = 'javascript:return confirm(\"确认要删除吗？\") ? true : false;' >删除</a>" +
-              @"<a href='/" + controller + "/Edit?id=" + entity.Id + "'>编辑</a>");
+                    @"<a href='/" + controller + "/Create?id=" + entity.Id + "'>新建</a>" +
+                    @"<a href='/" + controller + "/Delete?id=" + entity.Id + "' onclick = 'javascript:return confirm(\"确认要删除吗？\") ? true : false;' >删除</a>" +
+                    @"<a href='/" + controller + "/Edit?id=" + entity.Id + "'>编辑</a>");
 
             }
 
@@ -247,7 +248,7 @@ namespace LindCore.TreeHelper
             if (!displayAuthority && entity.Authority > 0)
             {
                 html.Append("<span>【");
-              //  html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForSpanHtmlTags(null, name + entity.Id + "Authority", null, entity.Authority));
+                //  html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForSpanHtmlTags(null, name + entity.Id + "Authority", null, entity.Authority));
                 html.Append("】</span>");
             }
 
@@ -263,7 +264,7 @@ namespace LindCore.TreeHelper
                     if (authority != null)
                         authorityVal = authority.Item2;
                 }
-               // html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForCheckboxHtmlTags(null, name + entity.Id + "Authority", null, authorityVal, entity.Authority));
+                // html.Append(System.Web.Mvc.Html.MvcExtensions.AuthorityCommandForCheckboxHtmlTags(null, name + entity.Id + "Authority", null, authorityVal, entity.Authority));
                 html.Append("</span>");
                 html.Append("】<span>");
             }
