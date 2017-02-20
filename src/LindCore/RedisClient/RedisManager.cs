@@ -21,7 +21,9 @@ namespace LindCore.RedisClient
         /// <summary>
         /// StackExchange.Redis对象
         /// </summary>
-        private static ConnectionMultiplexer instance;
+        private static ConnectionMultiplexer _redis;
+
+
         /// <summary>
         /// 得到StackExchange.Redis单例对象
         /// </summary>
@@ -29,19 +31,20 @@ namespace LindCore.RedisClient
         {
             get
             {
-                if (instance == null)
+                if (_redis == null || !_redis.IsConnected)
                 {
                     lock (_locker)
                     {
-                        if (instance != null)
-                            return instance;
+                        if (_redis == null || !_redis.IsConnected)
+                        {
 
-                        instance = GetManager();
-                        return instance;
+                            _redis = GetManager();
+                            return _redis;
+                        }
                     }
                 }
 
-                return instance;
+                return _redis;
             }
         }
 
@@ -52,15 +55,7 @@ namespace LindCore.RedisClient
         /// <returns></returns>
         private static ConnectionMultiplexer GetManager()
         {
-            try
-            {
-                return GetCurrentRedis();
-            }
-            catch (RedisConnectionException)//超时或者读写切换时
-            {
-
-                return GetCurrentRedis();
-            }
+            return GetCurrentRedis();
         }
 
         /// <summary>
@@ -94,11 +89,12 @@ namespace LindCore.RedisClient
                     }
                     catch (RedisConnectionException ex)//超时
                     {
-                        LoggerFactory.Logger_Debug("RedisConnectionException" + ex.Message);
+                        LoggerFactory.Logger_Debug("GetCurrentRedis().RedisConnectionException" + ex.Message);
                         continue;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        LoggerFactory.Logger_Debug("GetCurrentRedis().Exception" + ex.Message);
                         throw;
                     }
                 }

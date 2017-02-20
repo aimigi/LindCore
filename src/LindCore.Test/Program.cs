@@ -43,6 +43,7 @@ namespace LindCore.Test
     }
     public class Program
     {
+       
         public static void Main(string[] args)
         {
             var obj = LindCore.CacheConfigFile.ConfigFactory.Instance.GetConfig<Test>();
