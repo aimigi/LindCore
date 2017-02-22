@@ -43,9 +43,10 @@ namespace LindCore.Test
     }
     public class Program
     {
-       
+
         public static void Main(string[] args)
         {
+
             var obj = LindCore.CacheConfigFile.ConfigFactory.Instance.GetConfig<Test>();
             LoggerFactory.Logger_Debug("test...");
             LoggerFactory.Logger_Fatal("fatal test...");

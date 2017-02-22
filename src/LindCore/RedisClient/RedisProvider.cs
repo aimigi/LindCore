@@ -4,11 +4,13 @@ using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LindCore.RedisClient
 {
     /// <summary>
+    /// 测试中，没有完成
     /// Redis提供者
     /// 实例－实现方式
     /// </summary>
@@ -16,6 +18,21 @@ namespace LindCore.RedisClient
     {
         ConnectionMultiplexer redis;
         ConfigurationOptions option;
+        static int DefaultPoolSize = 5;
+        static Dictionary<Thread, ConnectionMultiplexer> RedisPools = new Dictionary<Thread, ConnectionMultiplexer>();
+        static object clientLock = new object();
+        public IDatabase Db
+        {
+            get
+            {
+                return redis.GetDatabase();
+            }
+        }
+
+        public IDatabase GetClient()
+        {
+            return redis.GetDatabase();
+        }
         /// <summary>
         /// 生产一个redis连接实例
         /// </summary>
@@ -29,30 +46,41 @@ namespace LindCore.RedisClient
             string serviceName = "",
             bool isSentinel = false)
         {
-            option = new ConfigurationOptions();
-            var configArr = conn.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            configArr.ToList().ForEach(i => option.EndPoints.Add(i));
-            option.TieBreaker = "";//这行在sentinel模式必须加上
-            option.CommandMap = CommandMap.Sentinel;
-            redis = ConnectionMultiplexer.Connect(option);
-
-            for (int i = 0; i < option.EndPoints.Count; i++)
+            if (RedisPools.Count < 5)
             {
-                try
+                redis = ConnectionMultiplexer.Connect(conn);
+
+                if (isSentinel)
                 {
-                    conn = redis.GetServer(option.EndPoints[i]).SentinelGetMasterAddressByName(serviceName).ToString();
-                    break;
+                    option = new ConfigurationOptions();
+                    var configArr = conn.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    configArr.ToList().ForEach(i => option.EndPoints.Add(i));
+                    option.TieBreaker = "";//这行在sentinel模式必须加上
+                    option.CommandMap = CommandMap.Sentinel;
+
+                    for (int i = 0; i < option.EndPoints.Count; i++)
+                    {
+                        try
+                        {
+                            conn = redis.GetServer(option.EndPoints[i]).SentinelGetMasterAddressByName(serviceName).ToString();
+                            redis = ConnectionMultiplexer.Connect(option + ",password=" + password);
+                            break;
+                        }
+                        catch (RedisConnectionException ex)//超时
+                        {
+                            LoggerFactory.Logger_Debug("RedisConnectionException" + ex.Message);
+                            continue;
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
                 }
-                catch (RedisConnectionException ex)//超时
-                {
-                    LoggerFactory.Logger_Debug("RedisConnectionException" + ex.Message);
-                    continue;
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                if (!RedisPools.ContainsKey(Thread.CurrentThread))
+                    RedisPools.Add(Thread.CurrentThread, redis);
             }
+
         }
 
         protected override void Finalize(bool disposing)
