@@ -46,7 +46,7 @@ namespace LindCore.Test
 
         public static void Main(string[] args)
         {
-
+            Console.WriteLine("hello git.oschina.net");
             var obj = LindCore.CacheConfigFile.ConfigFactory.Instance.GetConfig<Test>();
             LoggerFactory.Logger_Debug("test...");
             LoggerFactory.Logger_Fatal("fatal test...");
