@@ -1,2 +1,2 @@
 #lindCore
-添加了最新的解决方案
+#add project to here from microsoft tfs.
