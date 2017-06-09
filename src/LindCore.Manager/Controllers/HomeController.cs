@@ -8,11 +8,9 @@ namespace LindCore.Manager.Controllers
 {
     public class HomeController : Controller
     {
-        ManagerContext _context;
+
         public IActionResult Index(ManagerContext context)
         {
-            _context = context;
-            var user = _context.WebManageUsers.ToList();
             return View();
         }
 

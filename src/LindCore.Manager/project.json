@@ -55,7 +55,11 @@
       "System.GC.Server": true
     }
   },
-
+  "runtimes": {
+    "win7-x64": {},
+    "linux-x64": {},
+    "osx-x64": {}
+  },
   "publishOptions": {
     "include": [
       "wwwroot",
@@ -68,5 +72,8 @@
   "scripts": {
     "prepublish": [ "bower install", "dotnet bundle" ],
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+  },
+  "commands": {
+    "watch": "set ASPNETCORE_ENVIRONMENT=Development && dotnet watch run"
   }
 }
