@@ -8,6 +8,7 @@ Write-Host "Current script directory is $scriptPath" -ForegroundColor Yellow
 if ([string]::IsNullOrEmpty($rootPath)) {
     $rootPath = "$scriptPath\.."
 }
+ 
 Write-Host "Root path used is $rootPath" -ForegroundColor Yellow
 
 $projectPaths = 
@@ -20,7 +21,8 @@ $projectPaths | foreach {
 	$name=$_.Name
     # $outPath = $_.Path + "\obj\publish"
     # $outPath = "d:\publish\"+$name
-	$outPath = "\\192.168.2.71\发布\"+$name
+
+	# $outPath = "\\192.168.2.71\发布\"+$name
     $projectPathAndFile = "$projectPath\$projectFile"
     Write-Host "Deleting old publish files in $outPath" -ForegroundColor Yellow
     remove-item -path $outPath -Force -Recurse -ErrorAction SilentlyContinue
