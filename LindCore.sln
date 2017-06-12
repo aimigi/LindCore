@@ -1,33 +1,36 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE829364-DCF3-459A-9C36-47491B11ACDA}"
+<<<<<<< HEAD
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore", "src\LindCore\LindCore.xproj", "{6665399E-CB10-40F6-A23C-6724146504F3}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.EF", "src\LindCore.Repositories.EF\LindCore.Repositories.EF.xproj", "{1FE4AD74-3E59-4AB7-B4A8-7CDF9B4796CC}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Test", "src\LindCore.Test\LindCore.Test.xproj", "{413267EA-2AA7-4DE4-9DA0-5CEF323938BB}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.MongoDB", "src\LindCore.Repositories.MongoDB\LindCore.Repositories.MongoDB.xproj", "{F4498D2C-9508-48FE-A5BF-05C5BA258E79}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.Dapper", "src\LindCore.Repositories.Dapper\LindCore.Repositories.Dapper.xproj", "{C682AF05-C2F9-46C2-83B2-ADC96003EBD3}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Manager", "src\LindCore.Manager\LindCore.Manager.xproj", "{435427E5-CDA6-4E51-83C3-95C1D63D15C6}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.TestClient", "src\LindCore.TestClient\LindCore.TestClient.xproj", "{2C1EFD1E-94CB-4EB6-AE52-E24D567F4286}"
+=======
+>>>>>>> f32801af895ab2219f934848faee8f01f1eb3067
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{C83CFDED-605D-4C0B-B910-AD4760E0B666}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LindCore.Repositories.Memory", "src\LindCore.Repositories.Memory\LindCore.Repositories.Memory.xproj", "{3504F6BF-BDCA-4222-9806-975A0BDC4EC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore", "src\LindCore\LindCore.csproj", "{6665399E-CB10-40F6-A23C-6724146504F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore.Repositories.EF", "src\LindCore.Repositories.EF\LindCore.Repositories.EF.csproj", "{1FE4AD74-3E59-4AB7-B4A8-7CDF9B4796CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore.Test", "src\LindCore.Test\LindCore.Test.csproj", "{413267EA-2AA7-4DE4-9DA0-5CEF323938BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore.Repositories.MongoDB", "src\LindCore.Repositories.MongoDB\LindCore.Repositories.MongoDB.csproj", "{F4498D2C-9508-48FE-A5BF-05C5BA258E79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore.Repositories.Dapper", "src\LindCore.Repositories.Dapper\LindCore.Repositories.Dapper.csproj", "{C682AF05-C2F9-46C2-83B2-ADC96003EBD3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore.Manager", "src\LindCore.Manager\LindCore.Manager.csproj", "{435427E5-CDA6-4E51-83C3-95C1D63D15C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore.TestClient", "src\LindCore.TestClient\LindCore.TestClient.csproj", "{2C1EFD1E-94CB-4EB6-AE52-E24D567F4286}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LindCore.Repositories.Memory", "src\LindCore.Repositories.Memory\LindCore.Repositories.Memory.csproj", "{3504F6BF-BDCA-4222-9806-975A0BDC4EC8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cli-windows", "cli-windows", "{08091653-BCF4-417C-B254-AEF6F9D2A966}"
 	ProjectSection(SolutionItems) = preProject
@@ -78,6 +81,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{C83CFDED-605D-4C0B-B910-AD4760E0B666} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
 		{6665399E-CB10-40F6-A23C-6724146504F3} = {C83CFDED-605D-4C0B-B910-AD4760E0B666}
 		{1FE4AD74-3E59-4AB7-B4A8-7CDF9B4796CC} = {C83CFDED-605D-4C0B-B910-AD4760E0B666}
 		{413267EA-2AA7-4DE4-9DA0-5CEF323938BB} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
@@ -85,7 +89,6 @@ Global
 		{C682AF05-C2F9-46C2-83B2-ADC96003EBD3} = {C83CFDED-605D-4C0B-B910-AD4760E0B666}
 		{435427E5-CDA6-4E51-83C3-95C1D63D15C6} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
 		{2C1EFD1E-94CB-4EB6-AE52-E24D567F4286} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
-		{C83CFDED-605D-4C0B-B910-AD4760E0B666} = {BA7DE966-6B31-40C3-9CB3-89A4F7132B7D}
 		{3504F6BF-BDCA-4222-9806-975A0BDC4EC8} = {C83CFDED-605D-4C0B-B910-AD4760E0B666}
 	EndGlobalSection
 EndGlobal
